@@ -18,10 +18,15 @@
   },
   "homepage": "https://github.com/web-ljc/gulp-base-pro#readme",
   "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "8",
     "gulp-cssmin": "^0.2.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
     "node-sass": "^7.0.1",
     "sass": "^1.51.0"
   },
