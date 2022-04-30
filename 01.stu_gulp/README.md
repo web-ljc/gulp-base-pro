@@ -77,3 +77,11 @@
 
       
 
+
+
+  ### gulp的常用插件
+    - gulp的各种插件执行各种压缩、混淆、转码任务
+    1. gulp-cssmin
+      - 下载 yarn add gulp-cssmin -D
+      - 导入 const cssmin = require('gulp-cssmin')
+    
