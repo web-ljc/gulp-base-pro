@@ -1,11 +1,18 @@
 const gulp = require('gulp')
+// 压缩css
 const cssmin = require('gulp-cssmin')
+// 兼容css
 const autoprefixer = require('gulp-autoprefixer')
 // 引入sass
 const sass = require('gulp-sass')(require('sass'))
+// 压缩js
 const uglify = require('gulp-uglify')
+// 兼容js
 const babel = require('gulp-babel')
+// 压缩html
 const htmlmin = require('gulp-htmlmin')
+// 删除打包文件
+const del = require('del')
 
 // 1打包css任务
 const cssHandler = function() {
@@ -69,6 +76,10 @@ const libHandler = function() {
     .src('./src/lib/**')
     .pipe(gulp.dest('./dist/lib/'))
 }
+// 8删除dist文件
+const delHandler = function() {
+  return del(['./dist/'])
+}
 
 // 导出
 module.exports = {
@@ -78,5 +89,22 @@ module.exports = {
   htmlHandler,
   imgHandler,
   videoHandler,
-  libHandler
+  libHandler,
+  delHandler
 }
+
+// 配置一个默认任务
+// 把所有的任务一起执行
+// gulp.series() 或者 gulp.parallel()
+// 方式1
+// gulp.task('default', () => {})
+// 方法2
+// module.exports.default = () => {}
+
+// 创建一个默认任务，可以通过gulp直接执行
+// module.exports.default = gulp.parallel(cssHandler, sassHandler, jsHandler, htmlHandler)
+// 优化默认指令
+module.exports.default = gulp.series(
+  delHandler,
+  gulp.parallel(cssHandler, sassHandler, jsHandler, htmlHandler)
+)
