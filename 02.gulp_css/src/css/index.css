@@ -1,0 +1,12 @@
+body {
+  background-color: pink;
+}
+p {
+  width: 100px;
+  color: green;
+  display: flex;
+}
+div {
+  height: 200px;
+  color: green;
+}
