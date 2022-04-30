@@ -107,6 +107,30 @@ const watchHandler = function() {
     .watch('./src/sass/*.sass', sassHandler)
 }
 
+// 导出
+module.exports = {
+  cssHandler,
+  sassHandler,
+  jsHandler,
+  htmlHandler,
+  imgHandler,
+  videoHandler,
+  libHandler,
+  delHandler
+}
+
+// 配置一个默认任务
+// 把所有的任务一起执行
+// gulp.series() 或者 gulp.parallel()
+// 方式1
+// gulp.task('default', () => {})
+// 方法2
+// module.exports.default = () => {}
+
+// 创建一个默认任务，可以通过gulp直接执行
+// module.exports.default = gulp.parallel(cssHandler, sassHandler, jsHandler, htmlHandler)
+// 优化默认指令
+// 删除文件， 并行打包， 启动服务, 监控文件更新
 module.exports.default = gulp.series(
   delHandler,
   gulp.parallel(cssHandler, sassHandler, jsHandler, htmlHandler),

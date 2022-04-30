@@ -114,6 +114,10 @@
     8. del
       - 下载 yarn add del -D
       - 作用：删除文件删除
+    
+    9. gulp-webserver
+      - 作用：基于node书写的服务器
+      - 下载：yarn add gulp-webserver -D
 
   ### gulp配置
     - 默认任务叫做default，可以直接执行 gulp
@@ -122,3 +126,6 @@
   ### gulp启动服务器
     - gulp可以启动一个基于node的服务器
     - 启动服务时，dist目录作为根目录
+    - proxies服务器代理
+
+## 组件
