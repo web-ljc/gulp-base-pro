@@ -119,6 +119,10 @@
       - 作用：基于node书写的服务器
       - 下载：yarn add gulp-webserver -D
 
+    10. gulp-file-include
+      - 作用：在一个html页面里导入一个html片段
+      - 下载： yarn add gulp-file-include -D
+
   ### gulp配置
     - 默认任务叫做default，可以直接执行 gulp
     - 执行gulp时，不会清除dist文件，会一直放进去

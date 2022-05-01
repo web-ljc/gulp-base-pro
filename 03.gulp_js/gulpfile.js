@@ -15,6 +15,8 @@ const htmlmin = require('gulp-htmlmin')
 const del = require('del')
 // 服务器
 const webserver = require('gulp-webserver')
+// html模块话
+const fileInclude = require('gulp-file-include')
 
 // 1打包css任务
 const cssHandler = function() {
@@ -48,6 +50,10 @@ const jsHandler = function() {
 const htmlHandler = function() {
   return gulp
     .src('./src/*.html')
+    .pipe(fileInclude({ // 根据配置导入html片段
+      prefix: '@-@',  // 自定义标识符
+      basepath: './src/components' // 基准目录
+    }))
     .pipe(htmlmin({
       collapseWhitespace: true, // 移除空格
       removeEmptyAttributes: true, // 移除空的属性(仅限于原生属性)
@@ -100,11 +106,10 @@ const webHandler = function() {
 }
 // 监控文件更新重新打包
 const watchHandler = function() {
-  return gulp
-    .watch('./src/*.html', htmlHandler)
-    .watch('./src/js/*.js', jsHandler)
-    .watch('./src/css/*.css', cssHandler)
-    .watch('./src/sass/*.sass', sassHandler)
+  gulp.watch('./src/*.html', htmlHandler)
+  gulp.watch('./src/js/*.js', jsHandler)
+  gulp.watch('./src/css/*.css', cssHandler)
+  gulp.watch('./src/sass/*.sass', sassHandler)
 }
 
 module.exports.default = gulp.series(

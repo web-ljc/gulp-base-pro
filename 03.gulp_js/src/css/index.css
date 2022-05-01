@@ -10,3 +10,6 @@ div {
   height: 200px;
   color: green;
 }
+.active {
+  display: none;
+}
